@@ -5,6 +5,10 @@ export interface LoginTestData {
     invalidPassword: string;
 }
 
+export interface MainTestData {
+
+}
+
 export interface HomeImageElementsList {
     isTee: boolean;
     imageLink: string;
@@ -12,3 +16,10 @@ export interface HomeImageElementsList {
     info: string;
     buttonLink: string;
 }
+
+export interface HotProductsElementsList {
+    productImageLink: string;
+    productName: string;
+    productPrice: string;
+}
+

@@ -42,5 +42,37 @@
             "info": "Find conscientious, comfy clothing in our eco-friendly collection",
             "buttonLink": "Shop Eco-Friendly"
         }
+    ],
+    "hotProductsElements": [
+        {
+            "productImageLink": "https://magento.softwaretestingboard.com/pub/media/catalog/product/cache/2a213d0c937b30e310c8ee797a880cef/w/s/ws12-orange_main_2.jpg",
+            "productName": "Radiant Tee",
+            "productPrice": "$22.00"
+        },
+        {
+            "productImageLink": "https://magento.softwaretestingboard.com/pub/media/catalog/product/cache/2a213d0c937b30e310c8ee797a880cef/w/t/wt09-white_main_1.jpg",
+            "productName": "Breathe-Easy Tank",
+            "productPrice": "$34.00"
+        },
+        {
+            "productImageLink": "https://magento.softwaretestingboard.com/pub/media/catalog/product/cache/2a213d0c937b30e310c8ee797a880cef/m/t/mt07-gray_main_1.jpg",
+            "productName": "Argus All-Weather Tank",
+            "productPrice": "$22.00"
+        },
+        {
+            "productImageLink": "https://magento.softwaretestingboard.com/pub/media/catalog/product/cache/2a213d0c937b30e310c8ee797a880cef/m/h/mh07-gray_main_2.jpg",
+            "productName": "Hero Hoodie",
+            "productPrice": "$54.00"
+        },
+        {
+            "productImageLink": "https://magento.softwaretestingboard.com/pub/media/catalog/product/cache/2a213d0c937b30e310c8ee797a880cef/m/b/mb02-gray-0.jpg",
+            "productName": "Fusion Backpack",
+            "productPrice": "$59.00"
+        },
+        {
+            "productImageLink": "https://magento.softwaretestingboard.com/pub/media/catalog/product/cache/2a213d0c937b30e310c8ee797a880cef/w/b/wb04-blue-0.jpg",
+            "productName": "Push It Messenger Bag",
+            "productPrice": "$45.00"
+        }
     ]
 }
