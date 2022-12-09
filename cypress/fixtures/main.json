@@ -1,0 +1,46 @@
+{
+    "homeImageElements": [
+        {
+            "isTee": false,
+            "imageLink": "https://magento.softwaretestingboard.com/pub/media/wysiwyg/home/home-main.jpg",
+            "title": "Get fit and look fab in new seasonal styles",
+            "info": "New Luma Yoga Collection",
+            "buttonLink": "Shop New Yoga"
+        },
+        {
+            "isTee": false,
+            "imageLink": "https://magento.softwaretestingboard.com/pub/media/wysiwyg/home/home-pants.jpg",
+            "title": "20% OFF",
+            "info": "Luma pants when you shop today*",
+            "buttonLink": "Shop Pants"
+        },
+        {
+            "isTee": true,
+            "imageLink": "https://magento.softwaretestingboard.com/pub/media/wysiwyg/home/home-t-shirts.png",
+            "title": "Even more ways to mix and match",
+            "info": "Buy 3 Luma tees get a 4th free",
+            "buttonLink": "Shop Tees"
+        },
+        {
+            "isTee": false,
+            "imageLink": "https://magento.softwaretestingboard.com/pub/media/wysiwyg/home/home-erin.jpg",
+            "title": "Take it from Erin",
+            "info": "Luma founder Erin Renny shares her favorites!",
+            "buttonLink": "Shop Erin Recommends"
+        },
+        {
+            "isTee": false,
+            "imageLink": "https://magento.softwaretestingboard.com/pub/media/wysiwyg/home/home-performance.jpg",
+            "title": "Science meets performance",
+            "info": "Wicking to raingear, Luma covers you",
+            "buttonLink": "Shop Performance"
+        },
+        {
+            "isTee": false,
+            "imageLink": "https://magento.softwaretestingboard.com/pub/media/wysiwyg/home/home-eco.jpg",
+            "title": "Twice around, twice as nice",
+            "info": "Find conscientious, comfy clothing in our eco-friendly collection",
+            "buttonLink": "Shop Eco-Friendly"
+        }
+    ]
+}
