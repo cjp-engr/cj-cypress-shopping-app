@@ -4,25 +4,6 @@ import { HomeImageElementsList, HotProductsElementsList } from "./model";
 
 let img: HTMLImageElement;
 
-// describe('Visit main page scenarios', () => {
-//     const viewportsToTest: Cypress.ViewportPreset[] = [
-//         "iphone-3",
-//         "ipad-2",
-//         "macbook-15",
-//     ];
-//     beforeEach('Visit main page', () => {
-//         cy.visitShop();
-//     });
-
-//     viewportsToTest.forEach((viewport) => {
-//         it('Hello', () => {
-//             cy.viewport(viewport);
-//         });
-
-//     });
-
-// });
-
 describe('Visit main page and check all the header images elements scenarios', () => {
     before(() => {
         cy.visitShop();
@@ -147,15 +128,114 @@ describe('Visit main page and check all the hot products elements scenarios', ()
 
 });
 
-describe('Visit main page using mobile and check the "Add to Cart", "Wishlist icon" and "Compare icon" scenarios', () => {
-
-    before(() => {
-        cy.viewport('iphone-8');
+describe.only('Visit main page using mobile and check the "Add to Cart", "Wishlist icon" and "Compare icon" scenarios', () => {
+    let expectedLen: number = 6;
+    const viewportsToTest: Cypress.ViewportPreset[] = [
+        "iphone-3",
+        "iphone-8",
+        "samsung-s10"
+    ];
+    beforeEach(() => {
         cy.visitShop();
     });
+    viewportsToTest.forEach((viewport) => {
+        it(`The "Add to Cart" buttons are displayed successfully - ${viewport}`, () => {
+            cy.viewport(viewport);
+            for (let i = 1; i <= expectedLen; i++) {
+                MainPage.sethotProductItemsIndex = i;
+                MainPage.dynamicHotProductItemsElement.scrollIntoView();
+            }
+            MainPage.addToCartButtonsElement
+                .should('have.length', expectedLen)
+                .and('contain.text', 'Add to Cart');
+        });
+    });
 
-    it('The "Add to Cart" button is displayed successfully', () => {
+    viewportsToTest.forEach((viewport) => {
+        it(`The "Wishlist icon" buttons are displayed successfully - ${viewport}`, () => {
+            cy.viewport(viewport);
+            for (let i = 1; i <= expectedLen; i++) {
+                MainPage.sethotProductItemsIndex = i;
+                MainPage.dynamicHotProductItemsElement.scrollIntoView();
+            }
+            MainPage.wishListIconsElement.should('have.length', expectedLen);
+        });
+    });
 
+    viewportsToTest.forEach((viewport) => {
+        it(`The "Compare icon" buttons are displayed successfully  - ${viewport}`, () => {
+            cy.viewport(viewport);
+            for (let i = 1; i <= expectedLen; i++) {
+                MainPage.sethotProductItemsIndex = i;
+                MainPage.dynamicHotProductItemsElement.scrollIntoView();
+            }
+            MainPage.addToCompareButtonsElement.should('have.length', expectedLen);
+        });
+    });
+
+});
+
+describe('Visit main page using desktop/laptop and check the "Add to Cart", "Wishlist icon" and "Compare icon" scenarios', () => {
+    //https://stackoverflow.com/questions/69951125/cypress-how-do-you-locate-element-on-hover
+    let expectedLen: number = 6;
+    const viewportsToTest: Cypress.ViewportPreset[] = [
+        "macbook-16",
+        "macbook-15",
+        "macbook-13"
+    ];
+    beforeEach(() => {
+        cy.visitShop();
+    });
+    viewportsToTest.forEach((viewport) => {
+        it(`The "Add to Cart" buttons are displayed successfully - ${viewport}`, () => {
+            for (let i = 1; i <= expectedLen; i++) {
+                MainPage.sethotProductItemsIndex = i;
+                MainPage.dynamicHotProductItemsElement.scrollIntoView();
+                MainPage.dynamicHotProductItemsElement
+                    .realHover()
+                    .wait(1000)
+                    .then(() => {
+                        MainPage.dynamicAddToCartButtonsElement
+                            .should('contain.text', 'Add to Cart')
+                            .and('be.visible');
+                    });
+            }
+        });
+    });
+
+    viewportsToTest.forEach((viewport) => {
+        it.skip(`The "Wishlist icon" buttons are displayed successfully - ${viewport}`, () => {
+            for (let i = 1; i <= expectedLen; i++) {
+                MainPage.sethotProductItemsIndex = i;
+                MainPage.dynamicHotProductItemsElement.scrollIntoView();
+                MainPage.dynamicHotProductItemsElement
+                    .realHover()
+                    .wait(1000)
+                    .then(() => {
+                        MainPage.dynamicWishListIconsElement
+                            //todo
+                            // .should('be.visible');
+                            .should('exist');
+                    });
+            }
+        });
+    });
+
+    viewportsToTest.forEach((viewport) => {
+        it.skip(`The "Compare icon" buttons are displayed successfully - ${viewport}`, () => {
+            for (let i = 1; i <= expectedLen; i++) {
+                MainPage.sethotProductItemsIndex = i;
+                MainPage.dynamicHotProductItemsElement.scrollIntoView();
+                MainPage.dynamicHotProductItemsElement
+                    .realHover()
+                    .then(() => {
+                        MainPage.dynamicAddToCompareButtonsElement
+                            //.should('be.visible');
+                            //todo
+                            .should('exist');
+                    });
+            }
+        });
     });
 
 });

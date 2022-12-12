@@ -10,10 +10,11 @@ class Main {
 
     //-----Start All Hot Products properties-----//
     private hotProductImagesLink: string;
+    private hotProductItemIndex: number;
     private hotProductNames: string = ".product-item-link";
     private hotProductPrices: string = ".price";
     //Note: These elements will only display in mobile view
-    private wishListIcons: string = "a[title='Add to Wish List]";
+    private wishListIcons: string = "a[title='Add to Wish List']";
     private addToCartButtons: string = "button[title='Add to Cart']";
     private addToCompareButtons: string = "a[title='Add to Compare']";
     //-----End All Hot Products properties-----//
@@ -51,6 +52,26 @@ class Main {
     //-----End Home images properties-----//
 
     //-----Start All Hot Products properties-----//
+
+    set sethotProductItemsIndex(index: number) {
+        this.hotProductItemIndex = index;
+    }
+
+    get dynamicHotProductItemsElement(): Cypress.Chainable<JQuery<HTMLElement>> {
+        return cy.get(`.product-item:nth-child(${this.hotProductItemIndex})`);
+    }
+
+    get dynamicAddToCartButtonsElement(): Cypress.Chainable<JQuery<HTMLElement>> {
+        return cy.get(`.product-item:nth-child(${this.hotProductItemIndex}) ${this.addToCartButtons}`);
+    }
+
+    get dynamicWishListIconsElement(): Cypress.Chainable<JQuery<HTMLElement>> {
+        return cy.get(`.product-item:nth-child(${this.hotProductItemIndex}) ${this.wishListIcons}`);
+    }
+
+    get dynamicAddToCompareButtonsElement(): Cypress.Chainable<JQuery<HTMLElement>> {
+        return cy.get(`.product-item:nth-child(${this.hotProductItemIndex}) ${this.addToCompareButtons}`);
+    }
 
     set setHotProductImagesLink(link: string) {
         this.hotProductImagesLink = link;

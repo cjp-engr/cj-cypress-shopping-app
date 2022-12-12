@@ -16,6 +16,8 @@
 // Import commands.js using ES2015 syntax:
 import './commands';
 import './exceptions';
+import 'cypress-real-events';
+
 
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
