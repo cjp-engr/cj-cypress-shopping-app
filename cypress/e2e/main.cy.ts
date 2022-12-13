@@ -128,7 +128,7 @@ describe('Visit main page and check all the hot products elements scenarios', ()
 
 });
 
-describe.only('Visit main page using mobile and check the "Add to Cart", "Wishlist icon" and "Compare icon" scenarios', () => {
+describe('Visit main page using mobile and check the "Add to Cart", "Wishlist icon" and "Compare icon" scenarios', () => {
     let expectedLen: number = 6;
     const viewportsToTest: Cypress.ViewportPreset[] = [
         "iphone-3",
@@ -180,8 +180,8 @@ describe('Visit main page using desktop/laptop and check the "Add to Cart", "Wis
     let expectedLen: number = 6;
     const viewportsToTest: Cypress.ViewportPreset[] = [
         "macbook-16",
-        "macbook-15",
-        "macbook-13"
+        // "macbook-15",
+        // "macbook-13"
     ];
     beforeEach(() => {
         cy.visitShop();
@@ -204,7 +204,7 @@ describe('Visit main page using desktop/laptop and check the "Add to Cart", "Wis
     });
 
     viewportsToTest.forEach((viewport) => {
-        it.skip(`The "Wishlist icon" buttons are displayed successfully - ${viewport}`, () => {
+        it(`The "Wishlist icon" buttons are displayed successfully - ${viewport}`, () => {
             for (let i = 1; i <= expectedLen; i++) {
                 MainPage.sethotProductItemsIndex = i;
                 MainPage.dynamicHotProductItemsElement.scrollIntoView();
@@ -216,13 +216,14 @@ describe('Visit main page using desktop/laptop and check the "Add to Cart", "Wis
                             //todo
                             // .should('be.visible');
                             .should('exist');
+
                     });
             }
         });
     });
 
     viewportsToTest.forEach((viewport) => {
-        it.skip(`The "Compare icon" buttons are displayed successfully - ${viewport}`, () => {
+        it(`The "Compare icon" buttons are displayed successfully - ${viewport}`, () => {
             for (let i = 1; i <= expectedLen; i++) {
                 MainPage.sethotProductItemsIndex = i;
                 MainPage.dynamicHotProductItemsElement.scrollIntoView();

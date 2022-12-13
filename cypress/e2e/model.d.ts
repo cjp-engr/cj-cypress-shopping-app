@@ -1,8 +1,12 @@
 export interface LoginTestData {
     registeredEmail: string;
+    unregisteredEmail: string;
     validPassword: string;
     invalidEmail: string;
     invalidPassword: string;
+    loginPageLink: string;
+    welcomeMessage: string;
+
 }
 
 export interface MainTestData {
