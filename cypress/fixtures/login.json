@@ -4,6 +4,8 @@
     "validPassword": "Test750!!",
     "invalidEmail": "invalid",
     "invalidPassword": "invalid",
-    "loginPageLink": "https://magento.softwaretestingboard.com/customer/account/login/referer/aHR0cHM6Ly9tYWdlbnRvLnNvZnR3YXJldGVzdGluZ2JvYXJkLmNvbS8%2C/",
-    "welcomeMessage": "Welcome, CJ CJ!"
+    "loginPageLink": "https://magento.softwaretestingboard.com/customer/account/login/referer/",
+    "welcomeMessage": "Welcome, CJ CJ!",
+    "emptyFieldErrorMessage": "This is a required field.",
+    "invalidEmailErrorMessage": "Please enter a valid email address (Ex: johndoe@domain.com)."
 }

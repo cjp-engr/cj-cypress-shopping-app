@@ -6,7 +6,8 @@ export interface LoginTestData {
     invalidPassword: string;
     loginPageLink: string;
     welcomeMessage: string;
-
+    emptyFieldErrorMessage: string;
+    invalidEmailErrorMessage: string;
 }
 
 export interface MainTestData {

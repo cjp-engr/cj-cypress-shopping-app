@@ -12,64 +12,81 @@ describe('Login Scenarios', () => {
         cy.get<LoginTestData>('@login').then((data) => {
             cy.url().should('contain', data.loginPageLink);
             LoginPage.emailTextFieldElement.type(data.registeredEmail);
-            LoginPage.emailTextFieldElement.type(data.validPassword);
+            LoginPage.passwordTextFieldElement.type(data.validPassword);
+            LoginPage.signInButtonElement.contains("Sign In").click();
+            LoginPage.loginWelcomeMessageElement.should((message) => {
+                expect(message).to.contain(data.welcomeMessage);
+                // expect(message).to.have.string(data.welcomeMessage);
+            });
         });
-        LoginPage.signInButtonElement.contains("Sign In").click();
-        LoginPage.loginWelcomeMessageElement.should((message) => {
-            expect(message).to.equal('Welcome, CJ CJ!');
-        });
+
 
 
         cy.clearCookies();
         cy.clearLocalStorage();
     });
 
-    it('Login failed because the email is empty', () => {
+    it('Login failed because the "Email" is empty', () => {
 
         LoginPage.signInPageLinkElement.contains("Sign In").click();
         cy.get<LoginTestData>('@login').then((data) => {
             cy.url().should('contain', data.loginPageLink);
-            LoginPage.emailTextFieldElement.type(data.validPassword);
+            LoginPage.passwordTextFieldElement.type(data.validPassword);
+            LoginPage.signInButtonElement.contains("Sign In").click();
+            LoginPage.emailErrorMessageElement.should((message) => {
+                expect(message).to.contain(data.emptyFieldErrorMessage);
+            });
         });
-        LoginPage.signInButtonElement.contains("Sign In").click();
-        //todo error message for email
+
         cy.clearCookies();
         cy.clearLocalStorage();
     });
 
-    it('Login failed because the password is empty', () => {
+    it('Login failed because the "Password" is empty', () => {
 
         LoginPage.signInPageLinkElement.contains("Sign In").click();
         cy.get<LoginTestData>('@login').then((data) => {
             cy.url().should('contain', data.loginPageLink);
             LoginPage.emailTextFieldElement.type(data.registeredEmail);
+            LoginPage.signInButtonElement.contains("Sign In").click();
+            LoginPage.passwordErrorMessageElement.should((message) => {
+                expect(message).to.contain(data.emptyFieldErrorMessage);
+            });
         });
-        LoginPage.signInButtonElement.contains("Sign In").click();
-        //todo error message for password
+
         cy.clearCookies();
         cy.clearLocalStorage();
     });
 
+    //todo - to be continued
     it('Login failed because both fields are empty', () => {
         LoginPage.signInPageLinkElement.contains("Sign In").click();
         LoginPage.signInButtonElement.contains("Sign In").click();
-        //todo error message for email & password
+        // cy.get('.cf-tweet-this').should('contain.text', 'Invalid Form Key. Please refresh the page.');
+        cy.get<LoginTestData>('@login').then((data) => {
+            LoginPage.emailErrorMessageElement.should((message) => {
+                expect(message).to.contain(data.emptyFieldErrorMessage);
+            });
+            LoginPage.passwordErrorMessageElement.should((message) => {
+                expect(message).to.contain(data.emptyFieldErrorMessage);
+            });
+        });
         cy.clearCookies();
         cy.clearLocalStorage();
     });
 
-    it('Login failed because the email is in invalid format', () => {
+    it('Login failed because the "Email" is in invalid format', () => {
         LoginPage.signInPageLinkElement.contains("Sign In").click();
         cy.get<LoginTestData>('@login').then((data) => {
             cy.url().should('contain', data.loginPageLink);
-            // todo for invalid email format
-            LoginPage.emailTextFieldElement.type(data.validPassword);
-        });
-        LoginPage.signInButtonElement.contains("Sign In").click();
-        LoginPage.loginWelcomeMessageElement.should((message) => {
-            expect(message).to.equal('Welcome, CJ CJ!');
-        });
 
+            LoginPage.emailTextFieldElement.type(data.invalidEmail);
+            LoginPage.passwordTextFieldElement.type(data.validPassword);
+            LoginPage.signInButtonElement.contains("Sign In").click();
+            LoginPage.emailErrorMessageElement.should((message) => {
+                expect(message).to.contain(data.invalidEmailErrorMessage);
+            });
+        });
 
         cy.clearCookies();
         cy.clearLocalStorage();
